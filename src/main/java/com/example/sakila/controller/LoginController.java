@@ -20,11 +20,17 @@ public class LoginController {
 	private StaffMapper staffMapper;
 	
 	// 로그인 폼
+	@GetMapping("/on/logout")
+	public String logout(HttpSession session) {
+		session.invalidate(); // 세션 관련 컨테이너가 있지만 현재 미사용.
+		log.debug("/on/logout 실행됨.");
+		return "redirect:/off/login";
+	}
+	
+	// 로그인 폼
 	@GetMapping("/off/login")
 	public String login() {
-		
 		log.debug("/off/login 실행됨.");
-		
 		return "off/login";
 	}
 	
