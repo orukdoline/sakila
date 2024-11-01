@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<div>
+<div class="list-group sticky-top">
+	<div class="text-center">
+	<br>
+		<h4>메인메뉴</h4>
+	</div>
 	<ul class="list-group">
 	  <li class="list-group-item text-center">
 	  	<a href="${pageContext.request.contextPath}/on/main">홈으로</a>
