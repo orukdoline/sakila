@@ -8,6 +8,9 @@ import com.example.sakila.vo.Staff;
 
 @Mapper
 public interface StaffMapper {
+	// on/addStaff.jsp
+	void addStaff(Staff staff);
+	
 	// on/staffOne.jsp
 	Map<String, Object> selectStaffOne(int staffId);
 	

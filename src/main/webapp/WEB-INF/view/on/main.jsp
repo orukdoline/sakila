@@ -10,8 +10,6 @@
 <title>메인 페이지</title>
 </head>
 <body >
-	
-
 	<div class="container-fluid p-3">
 		<div class="row">
 			<div class="col-sm-2">
@@ -21,7 +19,6 @@
 			<div class="col-sm-10">
 				<!-- main content -->
 				<h1 class="sticky-top bg-white p-3">메인 페이지</h1><br>
-					
 			</div>
 		</div>
 	</div>

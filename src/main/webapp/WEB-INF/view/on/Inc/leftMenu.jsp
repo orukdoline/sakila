@@ -30,10 +30,10 @@
 	<ul class="list-group">
 	  <li class="list-group-item text-center list-group-item-secondary">::: 스태프 관리 :::</li>
 	  <li class="list-group-item text-center">
-	  	<a href="">스태프 리스트</a>
+	  	<a href="${pageContext.request.contextPath}/on/staffList">스태프 리스트</a>
 	  </li>
 	  <li class="list-group-item text-center">
-	  	<a href="">스태프 추가</a>
+	  	<a href="${pageContext.request.contextPath}/on/addStaff">스태프 추가</a>
 	  </li>
 	</ul><br>
 	  

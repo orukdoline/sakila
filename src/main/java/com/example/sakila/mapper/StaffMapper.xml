@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.sakila.mapper.StaffMapper">
+
+	<insert id = "addStaff" parameterType="com.example.sakila.vo.Staff">
+		INSERT INTO staff(store_id, address_id, first_name, last_name, email, username)
+		VALUES(#{storeId}, #{addressId}, #{firstName}, #{lastName}, #{email}, #{username})
+	</insert>
+
 	<select id = "selectStaffOne" parameterType="int" resultType="map">
 		<!-- java.lang.Integer == int, java.util.map == map -->
 		<!-- 조인이 필요함 - 조인 시 resultType은 java.util.Map-->
@@ -115,4 +121,5 @@
 		FROM staff
 		WHERE active = 1 AND staff_id = #{staffId} AND password = #{password};
 	</select>
+	
 </mapper>
