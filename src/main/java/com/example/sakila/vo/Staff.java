@@ -7,11 +7,12 @@ public class Staff {
 	private int staffId;
 	private String firstName;
 	private String lastName;
-	private int addressId;
+	private int addressId; // fk
 	private String email;
-	private int storeId;
-	private int active;
-	private String username;
-	private String password;
-	private String lastUpdate;
+	private int storeId; // fk
+	private int active; 
+	private String username; 
+	private String password; 
+	private String lastUpdate; 
+	
 }
