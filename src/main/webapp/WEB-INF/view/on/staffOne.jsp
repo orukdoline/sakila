@@ -120,6 +120,8 @@
 							<td>${staff.managerName}</td>
 						</tr>
 					</table>
+					
+					<!-- 비밀번호 수정, 이메일 수정, 주소 수정, store 수정 -->
 			</div>
 		</div>
 	</div>
