@@ -18,38 +18,33 @@
 			</div>
 			<div class="col-sm-10">
 				<!-- main content -->
-				<h1 class="sticky-top bg-white p-3">배우 추가</h1><br>
+				<h1 class="sticky-top bg-white p-3">배우파일 추가</h1><br>
 				
 				<div>
 					${msg}
 				</div>
 				
-				<form id="formActor" method="post" action="${pageContext.request.contextPath }/on/addActor" enctype="multipart/form-data">
-					<div>
-						<table class = "table table-borderless">
-							<tr>
-								<td>
-									<div class=" container input-group">
-									  <span class="input-group-text">이름</span>
-									  <input type="text" class="form-control" id="firstName" name="firstName" placeholder="이름">
-									  <input type="text" class="form-control" id="lastName" name="lastName" placeholder="성">
+				<form id ="formActorFile" method="post" enctype="multipart/form-data" action="${pageContext.request.contextPath}/on/addActorFile">
+					<table class="table">
+						<tr>
+							<td>actorId</td>
+							<td><input type="text" name="actorId" value="${actorId }" readonly></td>
+						</tr>
+						<tr>
+							<td>
+								<div id = "fileDiv" class="m-2 p-1">
+									<button type="button" id="btnAddFile" class="btn btn-primary btn-block">파일 추가</button>
+									<button type="button" id="btnRemoveFile" class="btn btn-danger btn-block">파일 삭제</button>
+									<div class="mt-2">
+										<div class="input-group">
+											<input type="file" class="form-control" name="actorFile" id="actorFile">
+										</div>
 									</div>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<div id = "fileDiv" class="m-2 p-1">
-										<button type="button" id="btnAddFile" class="btn btn-primary btn-block">파일 추가</button>
-										<button type="button" id="btnRemoveFile" class="btn btn-danger btn-block">파일 삭제</button>
-									</div>
-								</td>
-								
-							</tr>
-						</table>
-					</div>
-					<div id = "fileDiv" class="d-grid container">
-						<button type="button" id="btnAddActor" class="btn btn-secondary mt-2 btn-block">배우 추가</button>
-					</div>
+								</div>
+							</td>
+						</tr>
+					</table>
+					<button id="btnAddActorFile" class="btn btn-primary btn-block">배우파일 추가</button>
 				</form>
 			</div>
 		</div>
@@ -57,6 +52,10 @@
 </body>
 
 <script>
+	$('#btnAddActorFile').click(function() {
+		
+	});
+	
 	$('#btnAddFile').click(function() {
 		/* 자바스크립트 API
 		let arr = $('.actorFile');
@@ -83,13 +82,13 @@
 		}
 	});
 	
-	$('#btnAddActor').click(function() {
-		if ($('#firstName').val() == '' || $('#lastName').val() == '') {
-			alert('이름이 입력되지 않았습니다.');
-		} else if ($('input[name="actorFile"]').last().val() == '' && $('input[name="actorFile"]').length > 0) {
-			alert('첨부하지 않은 파일이 존재합니다.');
-		} else {
-			$('#formActor').submit();
+	$('#btnAddActorFile').click(function() {
+		if ($('input[name="actorFile"]').length == 0) {
+			alert('첨부되지 않은 파일이 존재합니다.');
+		} else if ($('input[name="actorFile"]').last().val() == '') {
+			alert('첨부되지 않은 파일이 존재합니다.');
+		} else{
+			$('#formActorFile').submit();
 		}
 		
 	});

@@ -56,4 +56,21 @@
 	  	<a href="${pageContext.request.contextPath}/on/addActor">배우 추가</a>
 	  </li>
 	</ul><br>
+	
+	<ul class="list-group">
+	  <li class="list-group-item text-center list-group-item-secondary">::: 영화 관리 :::</li>
+	  <li class="list-group-item text-center">
+	  	<a href="${pageContext.request.contextPath}/on/filmList">영화 리스트</a>
+	  </li>
+	  <li class="list-group-item text-center">
+	  	<a href="${pageContext.request.contextPath}/on/addFilm">영화 추가</a>
+	  </li>
+	</ul><br>
+	
+	<ul class="list-group">
+	  <li class="list-group-item text-center list-group-item-secondary">::: 기타 :::</li>
+	  <li class="list-group-item text-center">
+	  	<a href="${pageContext.request.contextPath}/on/actorList">통계</a>
+	  </li>
+	</ul><br>
 </div>

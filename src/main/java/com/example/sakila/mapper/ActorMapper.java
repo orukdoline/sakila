@@ -9,11 +9,19 @@ import com.example.sakila.vo.Actor;
 
 @Mapper
 public interface ActorMapper {
+	int deleteActor(int actorId);
+	
+	// /on/modifyActor
+	int updateActor(Actor actor);
+	
+	// /on/filmOne
+	List<Actor> selectActorListByFilm(int filmId);
+	
 	Actor selectActorOne(int actorId);
 	
 	int totalCount(String searchWord);
 	
 	List<Actor> selectActorList(Map<String, Object> map);
 	
-	public int insertActor(Actor actor);
+	int insertActor(Actor actor);
 }
