@@ -42,7 +42,9 @@
 			, last_update lastUpdate
 		FROM staff
 		ORDER BY staff_id
-		LIMIT #{beginRow}, #{rowPerPage}
+		<if test = "beginRow != null and rowPerPage != null">
+			LIMIT #{beginRow}, #{rowPerPage}
+		</if>
 	</select>
 
 	<insert id = "addStaff" parameterType="com.example.sakila.vo.Staff">

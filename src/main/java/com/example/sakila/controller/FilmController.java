@@ -8,12 +8,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.sakila.service.ActorService;
+import com.example.sakila.service.CategoryService;
 import com.example.sakila.service.FilmService;
 import com.example.sakila.service.LanguageService;
 import com.example.sakila.vo.Actor;
+import com.example.sakila.vo.Category;
 import com.example.sakila.vo.FilmForm;
 import com.example.sakila.vo.Language;
 
@@ -25,6 +28,34 @@ public class FilmController {
 	@Autowired FilmService filmService;
 	@Autowired ActorService actorService;
 	@Autowired LanguageService languageService ;
+	@Autowired CategoryService categoryService;
+	
+	@GetMapping("/on/filmList")
+	public String filmList(Model model, @RequestParam(required = false) Integer categoryId, @RequestParam(defaultValue = "1") int currentPage, @RequestParam(defaultValue = "10") int rowPerPage) {
+		log.debug("category : " + categoryId);
+		log.debug("currentPage : " + currentPage);
+		log.debug("rowPerPage : " + rowPerPage);
+		
+		List<Map<String, Object>> filmList = filmService.getFilmList(categoryId, currentPage, rowPerPage);
+		log.debug("filmList : " + filmList);
+		model.addAttribute("filmList", filmList);
+		
+		// Model에 category List 추가
+		List<Category> categoryList = categoryService.getCategoryList();
+		log.debug("categoryList", categoryList);
+		model.addAttribute("categoryList", categoryList);
+		
+		// 같이 넘겨야 모델값 현재페이지, 현재카테고리ID
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("currentCategoryId", categoryId);
+		
+		// 페이징 관련 데이터
+		int countRow = filmService.countFilmList(categoryId);
+		int lastPage = countRow / rowPerPage;
+		if (countRow % rowPerPage != 0) lastPage++;
+		model.addAttribute("lastPage", lastPage);
+		return "on/filmList";
+	}
 	
 	@PostMapping("/on/addFilm")
 	public String addFilm(FilmForm filmForm) {

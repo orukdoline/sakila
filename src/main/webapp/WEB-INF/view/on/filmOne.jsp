@@ -23,6 +23,7 @@
 				<!-- 필름 상세정보 -->
 				<!-- 필름 수정 : /on/modifyFilm -->
 				<!-- 필름 삭제 : /on/removeFilm (film_category 삭제 + film_actor 삭제 + film 삭제)-->
+				<!-- inventory 렌탈정보확인 + film_category 삭제 + film_actor 삭제 + film 삭제 -->
 				<div class="container-fluid p-3">
 					<h5 class="p-1">작품 정보</h5>
 					<table class="table table-striped">

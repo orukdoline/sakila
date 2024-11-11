@@ -1,6 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.sakila.mapper.StoreMapper">
+
+	<insert id="insertStore" parameterType="com.example.sakila.vo.Store">
+		INSERT INTO store(manager_staff_id, address_id)
+		VALUES(#{managerStaffId}, #{addressId});
+	</insert>
+
+	<select id="selectStoreOne" parameterType="int" resultType="map">
+		SELECT 
+		sto.store_id storeId
+		, sta.first_name firstName
+		, sta.last_name lastName
+		, sta.email email
+		, sta.active active
+		, sta.username username
+		, adr.address address
+		, adr.address2 address2
+		, adr.district district
+		, adr.city_id cityId
+		, adr.postal_code postalCode
+		, adr.phone phone
+		, sto.last_update lastUpdate
+		FROM store sto
+		INNER JOIN staff sta ON sto.manager_staff_id = sta.staff_id
+		INNER JOIN address adr ON sto.address_id = adr.address_id
+		WHERE sto.store_id = #{storeId};
+	</select>
+	
+	<select id="selectStoreListByMenu" resultType="map">
+		SELECT 
+		sto.store_id storeId
+		, sta.first_name firstName
+		, sta.last_name lastName
+		, sta.email email
+		, sta.active active
+		, sta.username username
+		, adr.address address
+		, adr.address2 address2
+		, adr.district district
+		, adr.city_id cityId
+		, adr.postal_code postalCode
+		, adr.phone phone
+		, sto.last_update lastUpdate
+		FROM store sto
+		INNER JOIN staff sta ON sto.manager_staff_id = sta.staff_id
+		INNER JOIN address adr ON sto.address_id = adr.address_id;
+	</select>
+
 	<select id = "selectStoreList" parameterType="com.example.sakila.vo.Store">
 		SELECT store_id storeId
 		FROM store
