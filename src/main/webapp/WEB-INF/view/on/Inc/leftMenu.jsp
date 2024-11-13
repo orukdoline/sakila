@@ -37,6 +37,9 @@
 	  		POST - /on/addStore - StoreController.addStore(Store)		
 	  	 -->
 	  </li>
+	  <li class="list-group-item text-center">
+	  	<a href="${pageContext.request.contextPath}/on/addInventory">인벤토리 추가</a>
+	  </li>
 	</ul><br>
 	
 	<ul class="list-group">
@@ -78,10 +81,16 @@
 	  	<a href="${pageContext.request.contextPath}/on/addFilm">영화 추가</a>
 	  </li>
 	  <li class="list-group-item text-center">
-	  	<a href="${pageContext.request.contextPath}/on/filmList">언어 리스트</a>
+	  	<a href="${pageContext.request.contextPath}/on/languageList">언어 리스트</a>
 	  </li>
 	  <li class="list-group-item text-center">
-	  	<a href="${pageContext.request.contextPath}/on/addFilm">언어 추가</a>
+	  	<a href="${pageContext.request.contextPath}/on/addlanguage">언어 추가</a>
+	  </li>
+	  <li class="list-group-item text-center">
+	  	<a href="${pageContext.request.contextPath}/on/categoryList">카테고리 리스트</a>
+	  </li>
+	  <li class="list-group-item text-center">
+	  	<a href="${pageContext.request.contextPath}/on/addcategory">카테고리 추가</a>
 	  </li>
 	</ul><br>
 	

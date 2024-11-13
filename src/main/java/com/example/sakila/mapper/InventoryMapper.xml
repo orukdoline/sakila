@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.sakila.mapper.InventoryMapper">
+
+	<!-- /on/inventoryList -->
+	<!-- 추가사항 : film x rental x payment ... x customer 조인하기, 검색 기능 추가 -->
+	<select id="selectInventoryListByStore" parameterType="Map" resultType="Map">
+		SELECT 
+			i.inventory_id inventoryId
+			, i.film_id filmId
+			, f.title title
+			, f.last_update lastUpdate
+		FROM inventory i INNER JOIN film f
+		ON i.film_id = f.film_id
+		WHERE i.store_id = #{storeId}
+		ORDER BY i.inventory_id DESC
+		LIMIT #{beginRow}, #{rowPerPage};
+	</select>
+
+	<!-- /on/removeFilm -->
+	<select id="selectCountInventoryByFilm" parameterType="Integer">
+		SELECT COUNT(*)
+		FROM inventory
+		WHERE film_id = #{FilmId}
+	</select>
+</mapper>

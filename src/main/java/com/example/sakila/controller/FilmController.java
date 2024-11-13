@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.sakila.service.ActorService;
 import com.example.sakila.service.CategoryService;
 import com.example.sakila.service.FilmService;
+import com.example.sakila.service.InventoryService;
 import com.example.sakila.service.LanguageService;
 import com.example.sakila.vo.Actor;
 import com.example.sakila.vo.Category;
@@ -29,6 +30,42 @@ public class FilmController {
 	@Autowired ActorService actorService;
 	@Autowired LanguageService languageService ;
 	@Autowired CategoryService categoryService;
+	@Autowired InventoryService inventoryService;
+	
+	@GetMapping("/on/modifyFilm")
+	public String modifyFilm(Model model, @RequestParam int filmId) {
+		log.debug("filmId : " + filmId);
+		Map<String, Object> filmOne = filmService.getFilmOne(filmId); // 폼에 뿌려줄 해당 영화정보 가져오기.
+		model.addAttribute("filmOne", filmOne);
+		
+		// specialFeatures를 쪼개서 배열로 저장.
+		String[] specialFeaturesArray = ((String)filmOne.get("specialFeatures")).split(",");
+		model.addAttribute("specialFeaturesArray", specialFeaturesArray);
+		
+		List<Language> languageList = languageService.getLanguageList(); // 언어 정보 가져오기.
+		model.addAttribute("languageList", languageList);
+		
+		return "on/modifyFilm";
+	}
+	
+	@GetMapping("/on/removeFilm")
+	public String removeFilm(Model model, @RequestParam(required = false) Integer filmId) {
+		log.debug("filmId : " + filmId);
+		Integer count = inventoryService.getCountInventoryByFilm(filmId);
+		if (count != 0) {
+//			
+//			Map<String, Object> film = filmService.getFilmOne(filmId);
+//			List<Actor> actorList = actorService.getActorListByFilm(filmId);
+//			
+//			model.addAttribute("film", film);
+//			model.addAttribute("actorList", actorList);
+//			model.addAttribute("removeMsgFilm", "영화가 인벤토리에 존재합니다.");
+//			return "on/filmOne?filmId=" + filmId;
+			return "redirect:/on/filmOne?filmId=" + filmId; // 메세지 추가는 힘듦.
+		}
+		filmService.removeFilmByKey(filmId);
+		return "redirect:/on/filmList";
+	}
 	
 	@GetMapping("/on/filmList")
 	public String filmList(Model model, @RequestParam(required = false) Integer categoryId, @RequestParam(defaultValue = "1") int currentPage, @RequestParam(defaultValue = "10") int rowPerPage) {
@@ -76,14 +113,32 @@ public class FilmController {
 	}
 	
 	@GetMapping("/on/filmOne")
-	public String filmOne(Model model, @RequestParam int filmId) {
+	public String filmOne(Model model, @RequestParam int filmId, @RequestParam(required = false) String searchName) {
+		// 필름 정보
 		Map<String , Object> film = filmService.getFilmOne(filmId);
 		log.debug(film.toString());
-		
-		List<Actor> actorList = actorService.getActorListByFilm(filmId);
-		
 		model.addAttribute("film", film);
+		
+		// 전체 카테고리
+		List<Category> allCategoryList = categoryService.getCategoryList();
+		log.debug(allCategoryList.toString());
+		model.addAttribute("allCategoryList", allCategoryList);
+		
+		// 현재 필름의 카테고리
+		List<Map<String, Object>> filmCategoryList = categoryService.getFilmCategoryListByFilm(filmId);
+		log.debug(filmCategoryList.toString());
+		model.addAttribute("filmCategoryList", filmCategoryList);
+		
+		// 검색 배우 리스트(searchName이 null이 아닐 때)
+		if (searchName != null) { // 배우이름 검색 버튼으로 왔다면 
+			List<Actor> searchActorList = actorService.getActorListByActor(searchName);
+			model.addAttribute("searchActorList", searchActorList);
+		}
+		
+		// 현재 필름의 배우 리스트
+		List<Actor> actorList = actorService.getActorListByFilm(filmId);
 		model.addAttribute("actorList", actorList);
+		
 		return "on/filmOne";
 	}
 }

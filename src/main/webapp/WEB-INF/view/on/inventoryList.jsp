@@ -18,25 +18,21 @@
 			</div>
 			<div class="col-sm-10">
 				<!-- main content -->
-				<h1 class="sticky-top bg-white p-3">지점 리스트</h1><br>
+				<h1 class="sticky-top bg-white p-3">인벤토리 리스트</h1><br>
 				
 				<table class="table">
 					<tr>
-						<td>StoreId</td>
-						<td>ManagerStaff</td>
-						<td>Address</td>
-						<td>LastUpdate</td>
-						<td></td>
-						<td></td>
+						<td>inventoryId</td>
+						<td>filmId</td>
+						<td>title</td>
+						<td>lastUpdate</td>
 					</tr>
-					<c:forEach var="s" items="${storeListByMenu}">
+					<c:forEach var="iv" items="${inventoryList }">
 						<tr>
-							<td>${s.storeId }</td>
-							<td>${s.firstName} ${s.lastName}</td>
-							<td>${s.address}</td>
-							<td>${s.lastUpdate}</td>
-							<td><a href="${pageContext.request.contextPath }/on/inventoryList?storeId=${s.storeId}" class="btn btn-primary btn-sm">인벤토리 관리</a></td>
-							<td><a href="${pageContext.request.contextPath }/on/storeOne?storeId=${s.storeId}" class="btn btn-primary btn-sm">상세보기</a>
+							<td>${iv.inventoryId }</td>
+							<td>${iv.filmId }</td>
+							<td>${iv.title }</td>
+							<td>${iv.lastUpdate }</td>
 						</tr>
 					</c:forEach>
 				</table>

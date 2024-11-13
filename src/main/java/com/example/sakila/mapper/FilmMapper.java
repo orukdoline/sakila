@@ -9,6 +9,10 @@ import com.example.sakila.vo.Film;
 
 @Mapper
 public interface FilmMapper {
+	Integer updateFilm(Film film);
+	
+	Integer deleteFilmByKey(Integer filmId);
+	
 	// film 목록 개수
 	int countFilmList(Integer categoryId);
 	
