@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class FilmCategory {
-	private int filmId;
-	private int categoryId;
+	private Integer filmId; // PK
+	private Integer categoryId; // PK, FK
 	private String lastUpdate;
 }

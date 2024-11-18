@@ -4,8 +4,8 @@ import lombok.Data;
 
 @Data
 public class City {
-	private int cityId; 
+	private Integer cityId; // PK 
 	private String city;
-	private int countryId;
+	private Integer countryId; // FK
 	private String lastUpdate;
 }

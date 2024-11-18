@@ -4,15 +4,14 @@ import lombok.Data;
 
 @Data
 public class Staff {
-	private int staffId;
+	private Integer staffId; // PK
 	private String firstName;
 	private String lastName;
-	private int addressId; // fk
+	private Integer addressId; // FK
 	private String email;
-	private int storeId; // fk
-	private int active; 
-	private String username; 
-	private String password; 
-	private String lastUpdate; 
-	
+	private Integer storeId; // FK
+	private Integer active;
+	private String username;
+	private String password;
+	private String lastUpdate;
 }

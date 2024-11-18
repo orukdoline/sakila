@@ -28,6 +28,7 @@
 						<td>LastUpdate</td>
 						<td></td>
 						<td></td>
+						<td></td>
 					</tr>
 					<c:forEach var="s" items="${storeListByMenu}">
 						<tr>
@@ -36,6 +37,7 @@
 							<td>${s.address}</td>
 							<td>${s.lastUpdate}</td>
 							<td><a href="${pageContext.request.contextPath }/on/inventoryList?storeId=${s.storeId}" class="btn btn-primary btn-sm">인벤토리 관리</a></td>
+							<td><a href="${pageContext.request.contextPath }/on/addInventory?storeId=${s.storeId}" class="btn btn-primary btn-sm">인벤토리 추가</a></td>
 							<td><a href="${pageContext.request.contextPath }/on/storeOne?storeId=${s.storeId}" class="btn btn-primary btn-sm">상세보기</a>
 						</tr>
 					</c:forEach>

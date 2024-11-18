@@ -18,7 +18,8 @@
 	</ul><br>
 	  
 	<ul class="list-group">
-	  <li class="list-group-item text-center list-group-item-secondary">::: 지점 관리 :::</li>
+	
+	  <li class="list-group-item text-center list-group-item-secondary">::: 지점&인벤토리 관리 :::</li>
 	  <li class="list-group-item text-center">
 	  	<a href="${pageContext.request.contextPath}/on/storeList">지점 리스트</a>
 	  	<!--  
@@ -29,16 +30,6 @@
 	  </li>
 	  <li class="list-group-item text-center">
 	  	<a href="${pageContext.request.contextPath}/on/addStore">지점 추가</a>
-	  	<!-- 
-	  		GET - /on/addStore 
-	  			- StoreController.addStore() : staffList 모델추가, search 주소검색결과 모델추가 - addStore.jsp
-	  		StoreMapper.insertStore() : Integer
-	  		StoreService.addStore() : Integer
-	  		POST - /on/addStore - StoreController.addStore(Store)		
-	  	 -->
-	  </li>
-	  <li class="list-group-item text-center">
-	  	<a href="${pageContext.request.contextPath}/on/addInventory">인벤토리 추가</a>
 	  </li>
 	</ul><br>
 	
@@ -55,10 +46,10 @@
 	<ul class="list-group">
 	  <li class="list-group-item text-center list-group-item-secondary">::: 고객 관리 :::</li>
 	  <li class="list-group-item text-center">
-	  	<a href="">고객 리스트</a>
+	  	<a href="${pageContext.request.contextPath}/on/customerList">고객 리스트</a>
 	  </li>
 	  <li class="list-group-item text-center">
-	  	<a href="">고객 추가</a>
+	  	<a href="${pageContext.request.contextPath}/on/addCustomer">고객 추가</a>
 	  </li>
 	</ul><br>
 	

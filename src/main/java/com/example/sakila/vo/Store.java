@@ -4,8 +4,8 @@ import lombok.Data;
 
 @Data
 public class Store {
-	private int storeId;
-	private int managerStaffId;
-	private int addressId;
+	private Integer storeId; // PK
+	private Integer managerStaffId; //
+	private Integer addressId; // FK
 	private String lastUpdate;
 }
